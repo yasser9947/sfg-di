@@ -11,13 +11,11 @@ public class SfgDiApplication {
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
 
-		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
-		System.out.println(i18nController.sayHello());
-
 		MyController myController = (MyController) ctx.getBean("myController");
 
-		System.out.println("------- Primary Bean");
-		System.out.println(myController.sayHello());
+		String greeting = myController.sayHello();
+
+		System.out.println(greeting);
 
 		System.out.println("------ Property");
 		PropertyInjectedController propertyInjectedController = (PropertyInjectedController) ctx.getBean("propertyInjectedController");
@@ -30,6 +28,11 @@ public class SfgDiApplication {
 		System.out.println("-------- Constructor" );
 		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
 		System.out.println(constructorInjectedController.getGreeting());
+
+		System.out.println("-0-----------------profile ");
+
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		System.out.println(i18nController.sayHello());
 	}
 
 }
